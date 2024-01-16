@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:18:23 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/01/15 20:29:37 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/01/15 23:44:09 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,9 @@ char    *get_next_line (int fd)
     static char *stv = NULL; //to store the begining of the next line 
     char        *full_line = NULL; // to get the full line with '\n' inside 
     char        *line; // to return
+
+    if (fd < 0 || BUFFER_SIZE < 0)
+        return (NULL);
     if (!ft_strchr(stv, '\n'))
         full_line = ft_strjoin(stv, ft_get_line(fd));
     else
@@ -110,31 +113,21 @@ char    *get_next_line (int fd)
     return (line);
 }
 
+void    lk()
+{
+    system("leaks a.out");
+}
 
 int main()
 {
-    int fd = open("fqr.txt", O_RDONLY);
-    // get_next_line(fd);
-    // get_next_line(fd);
-    // get_next_line(fd);
-    // get_next_line(fd);
-    // get_next_line(fd);
-    // get_next_line(fd);
-    // get_next_line(fd);
-    // get_next_line(fd);
-    // while (1)
-    // {
-    //     printf("%s", get_next_line(fd));
-    //     sleep (1);
-    // }
-    printf("%s", get_next_line(fd));
-    // printf("{------}\n");
-    printf("%s", get_next_line(fd));
-    printf("%s", get_next_line(fd));
-    printf("%s", get_next_line(fd));
-    printf("%s", get_next_line(fd));
-    printf("%s\n", get_next_line(fd));
-    printf("%s\n", get_next_line(fd));
-    printf("%s\n", get_next_line(fd));
-    printf("%s\n", get_next_line(fd));
+    // atexit(lk);
+    int fd = open ("fqr.txt", O_RDONLY);
+    char *str = get_next_line(fd);
+    while(str)
+    {
+        printf("%s", str);
+        free(str);
+        str = get_next_line(fd);
+        
+    }
 }

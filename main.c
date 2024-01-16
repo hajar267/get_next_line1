@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:19:34 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/01/15 20:25:14 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/01/15 23:26:33 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@
 // 	str[i] = '\0';
 // 	return (str);
 // }
-int main()
-{
-    printf("%s\n", ft_strjoin("NULL" ,"NULL"));
-}
+// int main()
+// {
+//     printf("%s\n", ft_strjoin("hajar" ,"fqr"));
+// }
