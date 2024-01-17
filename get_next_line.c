@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:18:23 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/01/15 23:44:09 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/01/17 04:02:51 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ char    *gal(char *full_line)
         i = ft_strlen(full_line) - j;
         s = ft_substr(full_line, i, j);
     }
+    free(full_line);
     return (s);
 }
 
@@ -52,7 +53,7 @@ char    *gbl(char *full_line)
     char    *line = NULL;
     int     i;
     int     j;
-    int size;
+    int     size;
     
     i = 0;
     j = 0;
@@ -61,12 +62,12 @@ char    *gbl(char *full_line)
     while (full_line[i] && full_line[i] != '\n')
         i++;
     if (!full_line[i])
-        size = i+ 1;
+        size = i + 1;
     else
-        size = i +2;
-    line = malloc(size); 
+        size = i + 2;
+    line = malloc(size);
     if (!line)
-        return 0;
+        return (NULL);
     i = -1;
     line[size - 1] = '\0';
     while(full_line[++i] && full_line[i] != '\n')
@@ -76,14 +77,15 @@ char    *gbl(char *full_line)
 }
 
 
-char    *ft_get_line(int fd)
+char    *ft_get_line(int fd, char *stv)
 {
     int     i;
     char    buffer[BUFFER_SIZE + 1];
     char    *line;
 
-    line = NULL;
-    while (!ft_strchr(line, '\n')) // while h != 0
+    i = 1;
+    line = ft_strdup(stv);
+    while (!ft_strchr(line, '\n'))
     {
         i  = read(fd, buffer, BUFFER_SIZE);  
         if (i == 0 || i == -1)
@@ -96,20 +98,19 @@ char    *ft_get_line(int fd)
 
 char    *get_next_line (int fd)
 {
-    static char *stv = NULL; //to store the begining of the next line 
-    char        *full_line = NULL; // to get the full line with '\n' inside 
-    char        *line; // to return
+    static char *stv = NULL;
+    char        *full_line = NULL;
+    char        *line;
+    char        *tmp;
 
     if (fd < 0 || BUFFER_SIZE < 0)
         return (NULL);
-    if (!ft_strchr(stv, '\n'))
-        full_line = ft_strjoin(stv, ft_get_line(fd));
-    else
-        full_line = stv;
-    // printf("---%s--\n", full_line);
-    line = gbl(full_line); // problem in gbl function that each time we call gnl it retuen first line by each 100 char
+    full_line = ft_get_line(fd, stv);
+    if (!full_line)
+        return (NULL);
+    return(full_line);
+    line = gbl(full_line);
     stv = gal(full_line);
-    // printf("----\n{%s}\n", stv);
     return (line);
 }
 
