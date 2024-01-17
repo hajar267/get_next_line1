@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:18:23 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/01/17 04:02:51 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/01/17 04:32:17 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char    *gal(char *full_line)
         s = ft_substr(full_line, i, j);
     }
     free(full_line);
+    full_line = NULL;
     return (s);
 }
 
@@ -80,10 +81,15 @@ char    *gbl(char *full_line)
 char    *ft_get_line(int fd, char *stv)
 {
     int     i;
-    char    buffer[BUFFER_SIZE + 1];
+    char    *buffer;
     char    *line;
 
     i = 1;
+    buffer = malloc(BUFFER_SIZE + 1);
+    if (!buffer)
+    {
+       return (free(buffer), NULL);
+    }
     line = ft_strdup(stv);
     while (!ft_strchr(line, '\n'))
     {
@@ -93,6 +99,7 @@ char    *ft_get_line(int fd, char *stv)
         buffer[i] = '\0';
         line = ft_strjoin(line, buffer);
     }
+    free(buffer);
     return (line);
 }
 
@@ -108,7 +115,7 @@ char    *get_next_line (int fd)
     full_line = ft_get_line(fd, stv);
     if (!full_line)
         return (NULL);
-    return(full_line);
+    // return(full_line);
     line = gbl(full_line);
     stv = gal(full_line);
     return (line);
@@ -121,7 +128,7 @@ void    lk()
 
 int main()
 {
-    // atexit(lk);
+    atexit(lk);
     int fd = open ("fqr.txt", O_RDONLY);
     char *str = get_next_line(fd);
     while(str)
