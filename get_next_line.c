@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:18:23 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/01/17 18:27:01 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/01/18 04:53:08 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char    *gbl(char *full_line)
         size = i + 2;
     line = malloc(size);
     if (!line)
-        return (free (line), NULL);
+        return ( NULL);
     i = -1;
     line[size - 1] = '\0';
     while(full_line[++i] && full_line[i] != '\n')
@@ -95,16 +95,16 @@ char    *ft_get_line(int fd, char *stv)
     {
         buffer = malloc(BUFFER_SIZE + 1);
         if (!buffer)
-            return (free(buffer), NULL);
+            return (NULL);
         i  = read(fd, buffer, BUFFER_SIZE);  
-        if (i == 0 || i == -1)
-            break;
+        if (i == 0)
+            return (free(buffer), line);
+        if (i < 0)
+            return (free(buffer), NULL);
         buffer[i] = '\0';
         line = ft_strjoin(line, buffer);
         free(buffer);
     }
-    if (!ft_strlen(line))
-        return (free(line), NULL);
     return (line);
 }
 
@@ -113,28 +113,40 @@ char    *get_next_line (int fd)
     static char *stv = NULL;
     char        *full_line = NULL;
     char        *line;
-    char        *tmp;
 
     if (fd < 0 || BUFFER_SIZE < 0)
         return (NULL);
     full_line = ft_get_line(fd, stv);
+    free(stv);
     if (!full_line)
         return (NULL);
     line = gbl(full_line);
     if (!line)
         return (NULL);
     stv = gal(full_line);
-    if (!stv)
-        return (NULL);
+    // printf("%s", line );
     return (line);
 }
 
-
 int main()
 {
-    int fd = open ("fqr.txt", O_RDONLY);
-    char *str = get_next_line(fd);
-
-    printf("%s\n", str);
-    atexit(lk);
+//    atexit(lk);
+   int fd = open("fqr.txt" ,O_RDONLY);
+//    char *str;
+//    while (str)
+//    {
+//     str = get_next_line(fd);
+//     printf("{%s}",str);
+//     free(str);
+   
+//    }
+printf("%s", get_next_line(fd));
+printf("%s", get_next_line(fd));
+printf("%s", get_next_line(fd));
+printf("%s", get_next_line(fd));
+printf("%s", get_next_line(fd));
+printf("%s", get_next_line(fd));
 }
+
+
+

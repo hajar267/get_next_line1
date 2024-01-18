@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:15:33 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/01/17 00:49:27 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/01/18 03:43:01 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define GET_NEXT_LINE_H
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 15
+#define BUFFER_SIZE 100
 #endif
 
 #include<unistd.h>
