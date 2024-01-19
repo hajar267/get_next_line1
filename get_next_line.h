@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:15:33 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/01/18 03:43:01 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/01/19 13:00:43 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include<fcntl.h>
 #include<stdio.h>
 #include<stdlib.h>
+#include<limits.h>
 
 // #include<stddef.h>
 // here add the functions prototype 

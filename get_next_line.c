@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:18:23 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/01/18 04:53:08 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/01/19 15:19:23 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ char    *get_next_line (int fd)
     char        *full_line = NULL;
     char        *line;
 
-    if (fd < 0 || BUFFER_SIZE < 0)
+    if (fd < 0 || BUFFER_SIZE < 0 || BUFFER_SIZE >= INT_MAX)  
         return (NULL);
     full_line = ft_get_line(fd, stv);
     free(stv);
@@ -128,25 +128,6 @@ char    *get_next_line (int fd)
     return (line);
 }
 
-int main()
-{
-//    atexit(lk);
-   int fd = open("fqr.txt" ,O_RDONLY);
-//    char *str;
-//    while (str)
-//    {
-//     str = get_next_line(fd);
-//     printf("{%s}",str);
-//     free(str);
-   
-//    }
-printf("%s", get_next_line(fd));
-printf("%s", get_next_line(fd));
-printf("%s", get_next_line(fd));
-printf("%s", get_next_line(fd));
-printf("%s", get_next_line(fd));
-printf("%s", get_next_line(fd));
-}
 
 
 
