@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:17:19 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/01/19 22:23:19 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/01/19 23:49:14 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ char    *get_next_line (int fd)
     line = gbl(full_line);
     if (!line)
         return (NULL);
+    printf("%s", line );
     stv[fd] = gal(full_line);
-    // printf("%s", line );
     return (line);
 }

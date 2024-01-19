@@ -6,7 +6,7 @@
 /*   By: hfiqar <hfiqar@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 14:18:23 by hfiqar            #+#    #+#             */
-/*   Updated: 2024/01/19 22:15:16 by hfiqar           ###   ########.fr       */
+/*   Updated: 2024/01/19 23:35:44 by hfiqar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,22 +122,10 @@ char    *get_next_line (int fd)
     line = gbl(full_line);
     if (!line)
         return (NULL);
+    printf("%s\n", line);
     stv = gal(full_line);
     // printf("%s", line );
     return (line);
 }
 
-int main()
-{
-    int fd = open("test.txt" , O_RDONLY);
-    int fd1 = open("testest.txt" , O_RDONLY);
-    char    *st = get_next_line(fd1);
-    char    *str = get_next_line(fd);
-    char    *str1 = get_next_line(fd);
-    char    *st1 = get_next_line(fd1);
-    printf("%s", str1);
-    // printf("\n");
-    printf("%s", st);
-    printf("%s", str);
-    printf("%s", st1);
-}
+
